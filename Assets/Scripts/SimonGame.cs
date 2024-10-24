@@ -22,8 +22,22 @@ public class SimonGame : MonoBehaviour
     // Variables pour gérer l'état du jeu
     private bool isPlayerTurn = false;
 
+    // Variables pour les sons
+    public AudioClip redSound;
+    public AudioClip greenSound;
+    public AudioClip blueSound;
+    public AudioClip yellowSound;
+    public AudioClip wrongSound;
+
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = "High Score: " + highScore;
         scoreText.text = "Score: " + score;
@@ -56,15 +70,19 @@ public class SimonGame : MonoBehaviour
             case 0:
                 // Activer le bouton rouge
                 redButton.GetComponent<Image>().color = Color.white;
+                PlaySound(redSound);
                 break;
             case 1:
                 greenButton.GetComponent<Image>().color = Color.white;
+                PlaySound(greenSound);
                 break;
             case 2:
                 blueButton.GetComponent<Image>().color = Color.white;
+                PlaySound(blueSound);
                 break;
             case 3:
                 yellowButton.GetComponent<Image>().color = Color.white;
+                PlaySound(yellowSound);
                 break;
         }
     }
@@ -112,8 +130,19 @@ public class SimonGame : MonoBehaviour
         sequence.Clear();
         score = 0;
         scoreText.text = "Score: " + score;
+
+        PlaySound(wrongSound);
+
         // Afficher un message ou un effet de fin de jeu si désiré
         StartCoroutine(PlaySequence());
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
 }

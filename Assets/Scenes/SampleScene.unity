@@ -157,6 +157,11 @@ MonoBehaviour:
   yellowButton: {fileID: 467583597}
   scoreText: {fileID: 611614550}
   highScoreText: {fileID: 1580412938}
+  redSound: {fileID: 8300000, guid: ed97e25c4541ca24381083d9ba94286a, type: 3}
+  greenSound: {fileID: 8300000, guid: a5ac02aaa99c8b649a7526388e379a77, type: 3}
+  blueSound: {fileID: 8300000, guid: 8c6c37e20c914b3428c3f568c8763e42, type: 3}
+  yellowSound: {fileID: 8300000, guid: 0bbe216468490844aa1d44d45ee1a663, type: 3}
+  wrongSound: {fileID: 8300000, guid: d85be7b3381a5b2409fbcf9c7fb591da, type: 3}
 --- !u!4 &220990442
 Transform:
   m_ObjectHideFlags: 0
